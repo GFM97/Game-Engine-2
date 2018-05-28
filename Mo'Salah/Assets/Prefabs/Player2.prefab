@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 54575326468567470}
   - component: {fileID: 82355116519611566}
   - component: {fileID: 114334069935509510}
+  - component: {fileID: 114691779069288636}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Untagged
@@ -204,8 +205,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6d7b062b293549a28643c91e0aa13d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  forwardForce: 2000
-  sidewaysForce: 500
+  rb: {fileID: 54575326468567470}
+  forwardForce: 3000
+  sidewaysForce: 80
+  timeLeft: 0
+  manager: {fileID: 0}
+  counter: 0
   keyLeft: 276
   keyRight: 275
+  keyUp: 273
+--- !u!114 &114691779069288636
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1144901655166058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 877aadd32b2d844f2bd3fe56f5b3c0a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movement: {fileID: 114334069935509510}

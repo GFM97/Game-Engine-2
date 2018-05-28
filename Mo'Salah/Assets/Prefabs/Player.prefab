@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114157703120046826}
   - component: {fileID: 114176760122247796}
   - component: {fileID: 82768593385057686}
+  - component: {fileID: 114462402581147034}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -40,7 +41,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1923558474283966}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: -5, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -124,7 +125,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: fb92951b6d1cd4720acb5b54db4b1a3c, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -206,10 +207,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 54298071804260512}
-  forwardForce: 4000
+  forwardForce: 3000
   sidewaysForce: 80
+  timeLeft: 0
+  manager: {fileID: 0}
+  counter: 0
   keyLeft: 97
   keyRight: 100
+  keyUp: 119
 --- !u!114 &114176760122247796
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -222,3 +227,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement: {fileID: 114157703120046826}
+--- !u!114 &114462402581147034
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1923558474283966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 

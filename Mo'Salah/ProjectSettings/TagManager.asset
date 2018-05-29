@@ -8,6 +8,8 @@ TagManager:
   - PowerUp
   - FakePwr
   - Ramp
+  - PowerUpP1
+  - PowerUpP2
   layers:
   - Default
   - TransparentFX

@@ -7,8 +7,12 @@ public class Respawn : MonoBehaviour {
 	[SerializeField] private Transform player; 
 	[SerializeField] private Transform respawnPoint; 
 
-	void OnTriggerEnter(Collider other)
+	public void OnTriggerEnter (Collider other)
 	{
-		player.transform.position = respawnPoint.transform.position;
+		if (other.gameObject.tag == "Respawn")
+			{
+				player.transform.position = respawnPoint.transform.position;
+			}
 	}
 }
+

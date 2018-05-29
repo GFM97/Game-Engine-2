@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour {
 
@@ -15,6 +16,11 @@ public class PlayerMovement : MonoBehaviour {
 	public KeyCode keyRight;
 	public KeyCode keyUp;
 	public KeyCode keyDown;
+
+	public PlayerMovement otherPlayer;
+
+	public Text playerText;
+	public Text otherText;
 
 	// We marked this as "Fixed"Update because we 
 	// are using it to mess with physics.
@@ -37,50 +43,57 @@ public class PlayerMovement : MonoBehaviour {
 
 		if (Input.GetKey (keyUp)) 
 		{
-			if (counter == 1) {
-				transform.localScale += new Vector3 (Random.Range(-0.9f, 0.9f), Random.Range(-0.9f, 0.9f), Random.Range(-0.9f, 0.9f));
-				counter = 0;
-			}
-
-			if (counter == 2) {
-
-				rb.AddForce (0, 0, forwardForce * Time.deltaTime * Random.Range(-200f, 200f));
-				counter = 0;
-			}
+			DoPowerUp (counter);
+			playerText.text = "";
+			counter = 0;
 		}
 
 		if (Input.GetKey (keyDown)) 
 		{
-			if (counter == 1) {
-				transform.localScale += new Vector3 (Random.Range(-0.9f, 0.9f), Random.Range(-0.9f, 0.9f), Random.Range(-0.9f, 0.9f));
-				counter = 0;
-			}
-
-			if (counter == 2) {
-
-				rb.AddForce (0, 0, forwardForce * Time.deltaTime * Random.Range(-200f, 200f));
-				counter = 0;
-			}
+			otherPlayer.DoPowerUp (counter);
+			playerText.text = "";
+			counter = 0;
 		}
 	}
 
 
 	public void OnTriggerEnter (Collider other)
-	{
-		if(other.gameObject.tag == "PowerUp" && counter == 0)
 		{
+			if(other.gameObject.tag == "PowerUp" && counter == 0)
+			{
+				counter = Random.Range(1, 3);
+				playerText.text = "Powerup";
+			}
 
-			counter = Random.Range(1, 3);
+			if(other.gameObject.tag == "Respawn")
+			{
+			transform.position = new Vector3(transform.position.x, 15f, transform.position.z);
+			}
+
 		}
-	}
+
 
 	void Update ()
-	{
-		if (rb.position.y < -1f) 
 		{
-			manager.EndGame ();
+			if (rb.position.y < -1f) 
+			{
+				manager.EndGame ();
+
+			}
+		}
+
+
+	public void DoPowerUp(int counter)
+	{
+		if (counter == 1) {
+			transform.localScale += new Vector3 (Random.Range(-0.9f, 0.9f), Random.Range(-0.9f, 0.9f), Random.Range(-0.9f, 0.9f));
+
+		}
+
+		if (counter == 2) {
+
+			rb.AddForce (0, 0, forwardForce * Time.deltaTime * Random.Range(-200f, 200f));
 
 		}
 	}
 }
-	

@@ -86,7 +86,7 @@ public class PlayerMovement : MonoBehaviour {
 	public void DoPowerUp(int counter)
 	{
 		if (counter == 1) {
-			transform.localScale += new Vector3 (Random.Range(-0.9f, 0.9f), Random.Range(-0.9f, 0.9f), Random.Range(-0.9f, 0.9f));
+			transform.localScale += new Vector3 (Random.Range(-0.6f, 0.6f), Random.Range(-0.1f, 0.9f), Random.Range(-0.6f, 0.6f));
 
 		}
 

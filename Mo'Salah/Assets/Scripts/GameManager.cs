@@ -5,13 +5,12 @@ public class GameManager : MonoBehaviour {
 
 	bool gameHasEnded = false;
 
-	public float restartDelay = 0.5f;
+	public GameObject CompleteLevelUI;
 
-	public GameObject completeLevelUI;
 
-	public void CompleteLevel()
+	public void Completelevel()
 	{
-		completeLevelUI.SetActive(true);
+		CompleteLevelUI.SetActive (true);
 	}
 
 	public void EndGame ()
@@ -19,30 +18,9 @@ public class GameManager : MonoBehaviour {
 		if (gameHasEnded == false)
 		{
 			gameHasEnded = true;
-			//Invoke("Restart", restartDelay);
 		}
 
 	}
-
-	public void Update()
-	{
-		if(PlayerPrefs.GetInt("Muted") == 1)
-		{
-			AudioListener.pause = true;
-		}
-
-		if(PlayerPrefs.GetInt("Muted") == 0)
-		{
-			AudioListener.pause = false;
-		}
-	}
-
-//	void Restart()
-//	{
-//		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-//	}
-
-
 }
 
 

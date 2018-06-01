@@ -1,17 +1,16 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class PauseMenu : MonoBehaviour {
 
-	public bool isPaused;
+	bool isPaused;
 
 	public GameObject canvas;
 
 	// Update is called once per frame
 	void Update ()
 	{
-		
-
 		if (Input.GetButtonDown("Cancel"))
 		{
 			Pause ();
@@ -21,6 +20,8 @@ public class PauseMenu : MonoBehaviour {
 	public void Resume()
 	{
 		isPaused = false;
+		canvas.SetActive(isPaused);
+		Time.timeScale = 1;
 	}
 
 	public void MainMenu()
@@ -35,13 +36,11 @@ public class PauseMenu : MonoBehaviour {
 		{
 			canvas.SetActive(true);
 			Time.timeScale = 0f;
-			AudioListener.volume = 0.2f;
 		}
 		else
 		{
 			canvas.SetActive(false);
 			Time.timeScale = 1f;
-			AudioListener.volume = 1f;
 		}
 	}
 }

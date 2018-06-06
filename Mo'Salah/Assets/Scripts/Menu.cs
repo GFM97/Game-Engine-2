@@ -16,9 +16,18 @@ public class Menu: MonoBehaviour
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 	}
 
+	void Update()
+	{
+		if (Input.GetKey(KeyCode.Space)) 
+		{
+			SceneManager.LoadScene ("Start");
+		}
+	}
+
 	public void Quit()
 	{
 		Debug.Log("Quit");
 		Application.Quit();
 	}
 }
+

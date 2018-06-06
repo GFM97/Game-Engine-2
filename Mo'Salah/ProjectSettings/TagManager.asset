@@ -10,6 +10,10 @@ TagManager:
   - Ramp
   - PowerUpP1
   - PowerUpP2
+  - Respawn2
+  - finish
+  - PlayerWin1
+  - PlayerWin2
   layers:
   - Default
   - TransparentFX

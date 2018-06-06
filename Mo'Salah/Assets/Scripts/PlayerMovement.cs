@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement; 
 
 public class PlayerMovement : MonoBehaviour {
 
@@ -8,19 +9,20 @@ public class PlayerMovement : MonoBehaviour {
 
 	public float forwardForce = 2000f;
 	public float sidewaysForce = 500f;
-	public float timeLeft;
 	public GameManager manager;
 	public int counter = 0;
+	public float timeLeft;
+	public float restartDelay = 0.5f;
 
 	public KeyCode keyLeft;
 	public KeyCode keyRight;
 	public KeyCode keyUp;
 	public KeyCode keyDown;
 
+
 	public PlayerMovement otherPlayer;
 
 	public Text playerText;
-	public Text otherText;
 
 	// We marked this as "Fixed"Update because we 
 	// are using it to mess with physics.
@@ -58,20 +60,28 @@ public class PlayerMovement : MonoBehaviour {
 
 
 	public void OnTriggerEnter (Collider other)
-		{
-			if(other.gameObject.tag == "PowerUp" && counter == 0)
-			{
-				counter = Random.Range(1, 3);
-				playerText.text = "Powerup";
-			}
-
-			if(other.gameObject.tag == "Respawn")
-			{
-			transform.position = new Vector3(transform.position.x, 15f, transform.position.z);
-			}
-
+	{
+		if (other.gameObject.tag == "PowerUp" && counter == 0) {
+			counter = Random.Range (1, 3);
+			playerText.text = "Powerup";
 		}
 
+		else if (other.gameObject.tag == "Respawn") {
+			transform.position = new Vector3 (5f, 5f, 0f);
+		}
+
+		else if (other.gameObject.tag == "Respawn2") {
+			transform.position = new Vector3 (0f, -20f, 1290f);
+		}
+
+		else if (other.gameObject.tag == "Finish") {
+			//Time.timeScale = 0;
+			Win ();
+			otherPlayer.Lose ();
+			//AudioListener.volume = 0;
+			Invoke("Credit", restartDelay);
+		}
+	}
 
 	void Update ()
 		{
@@ -96,4 +106,22 @@ public class PlayerMovement : MonoBehaviour {
 
 		}
 	}
+
+	public void Win()
+	{
+		playerText.text = "You Win!";
+		playerText.color = Color.green;
+	}
+
+	public void Credit()
+	{
+		SceneManager.LoadScene ("Credits");
+	}
+
+	public void Lose()
+	{
+		playerText.text = "You Lose!";
+		playerText.color = Color.red;
+	}
 }
+
